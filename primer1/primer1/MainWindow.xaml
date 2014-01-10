@@ -20,7 +20,7 @@
                 <RowDefinition Height="13*" />
                 <RowDefinition Height="104*"/>
             </Grid.RowDefinitions>
-            <Button Grid.Row="1" Margin="302,2,0,2">Cancel</Button>
+            <Button Name="buttonCancel" Grid.Row="1" Margin="302,2,0,2" Click="buttonCancel_Click">Cancel</Button>
             <Button Name="buttonSend" Grid.Row="1" Margin="185,2,117,2" Click="buttonSend_Click">Send</Button>
             <TextBox Name="statusBox" Grid.Row="1" Margin="50,4,247,0" BorderThickness="0"></TextBox>
             <Label Name="labelStatus" Grid.Row="1" Margin="0,0,347,0">Status :</Label>

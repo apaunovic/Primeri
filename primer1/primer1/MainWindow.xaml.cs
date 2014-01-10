@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Threading;
+using System.Threading.Tasks;
 using primer1.Model;
 
 namespace primer1
@@ -24,6 +26,8 @@ namespace primer1
     public partial class MainWindow : Window
     {
         private GasClient GasServerClient { get; set; }
+        private Task activeTask;
+        CancellationTokenSource t;
         
         public MainWindow()
         {
@@ -39,7 +43,22 @@ namespace primer1
 
         private async void buttonSend_Click(object sender, RoutedEventArgs e)
         {
-            readBox.Text = await GasServerClient.GetResponseAsync(writeBox.Text + "\n\n");
+            t = new CancellationTokenSource();
+            try
+            {
+                readBox.Text = await TaskCancellation.WithCancellation(GasServerClient.GetResponseAsync(writeBox.Text + "\n\n"), t.Token);
+            }
+            catch (OperationCanceledException ex)
+            {
+                readBox.Text = "Action cancelled";
+            }     
+            //readBox.Text = await TaskCancellation.WithCancellation(GasServerClient.GetResponseAsync(writeBox.Text + "\n\n"), t.Token);
+            //readBox.Text = await GasServerClient.GetResponseAsync(writeBox.Text + "\n\n");
         }
+
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
+        {
+                t.Cancel();             
+         }
     }
 }
