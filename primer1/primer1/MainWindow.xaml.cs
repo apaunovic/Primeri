@@ -34,6 +34,7 @@ namespace primer1
         {
             GasServerClient = new GasClient("192.168.5.55", 43976);
             await GasServerClient.ConnectAsync();
+            statusBox.Text = "Connected";
         }
 
         private async void buttonSend_Click(object sender, RoutedEventArgs e)

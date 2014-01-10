@@ -5,10 +5,13 @@
 
     <Grid Margin="5">
         <Grid Margin="0,0,407,0" Background ="WhiteSmoke">
+          <!--
             <ComboBox Margin="10,10,10,269" Background="White">
                 <ComboBoxItem Name="GASitem">GAS</ComboBoxItem>
             </ComboBox>
-            <Button Name="buttonConnect" Margin="10,102,10,173" Click="buttonConnect_Click">Connect</Button>
+          -->
+            <Button Name="buttonConnect" Margin="10,75,10,203" Click="buttonConnect_Click">Connect</Button>
+            <Label FontWeight="Bold" FontSize="20" Margin="26,10,22,245"  HorizontalAlignment="Center"  Width="52">GAS</Label>
         </Grid>
         
         <Grid Margin="105,0,0,0">
@@ -19,6 +22,8 @@
             </Grid.RowDefinitions>
             <Button Grid.Row="1" Margin="302,2,0,2">Cancel</Button>
             <Button Name="buttonSend" Grid.Row="1" Margin="185,2,117,2" Click="buttonSend_Click">Send</Button>
+            <TextBox Name="statusBox" Grid.Row="1" Margin="50,4,247,0" BorderThickness="0"></TextBox>
+            <Label Name="labelStatus" Grid.Row="1" Margin="0,0,347,0">Status :</Label>
             <TextBox Name="writeBox" BorderThickness="1" BorderBrush="Black"></TextBox>
             <TextBox Name="readBox" Grid.Row="2" BorderThickness="1" BorderBrush="Black" IsReadOnly="True"></TextBox>
         </Grid>
