@@ -10,3 +10,4 @@ C:\Users\Grid\Primeri\primer1\primer1\obj\Debug\primer1.Properties.Resources.res
 C:\Users\Grid\Primeri\primer1\primer1\obj\Debug\primer1.csproj.GenerateResource.Cache
 C:\Users\Grid\Primeri\primer1\primer1\obj\Debug\primer1.exe
 C:\Users\Grid\Primeri\primer1\primer1\obj\Debug\primer1.pdb
+C:\Users\Grid\Primeri\primer1\primer1\obj\Debug\primer1.csprojResolveAssemblyReference.cache

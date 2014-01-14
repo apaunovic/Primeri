@@ -1,0 +1,6 @@
+<msgs>
+<msg text="greska1" type="error" file="file1.test" line="213"/>
+<msg text="greska2" type="error" file="file1.test" line="270"/>
+<msg text="upozorenje1" type="warning" file="file1.test" line="320"/>
+<msg text="upozorenje2" type="warning" file="file1.test" line="500"/>
+</msgs>

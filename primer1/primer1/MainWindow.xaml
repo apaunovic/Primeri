@@ -1,10 +1,10 @@
 ﻿<Window x:Class="primer1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-
-    <Grid Margin="5">
-        <Grid Margin="0,0,407,0" Background ="WhiteSmoke">
+        Title="MainWindow" Height="350" Width="800">
+    
+        <Grid Margin="5">
+        <Grid Margin="0,0,682,0" Background ="WhiteSmoke">
           <!--
             <ComboBox Margin="10,10,10,269" Background="White">
                 <ComboBoxItem Name="GASitem">GAS</ComboBoxItem>
@@ -20,15 +20,40 @@
                 <RowDefinition Height="13*" />
                 <RowDefinition Height="104*"/>
             </Grid.RowDefinitions>
-            <Button Name="buttonCancel" Grid.Row="1" Margin="302,2,0,2" Click="buttonCancel_Click">Cancel</Button>
-            <Button Name="buttonSend" Grid.Row="1" Margin="185,2,117,2" Click="buttonSend_Click">Send</Button>
-            <TextBox Name="statusBox" Grid.Row="1" Margin="50,4,247,0" BorderThickness="0"></TextBox>
-            <Label Name="labelStatus" Grid.Row="1" Margin="0,0,347,0">Status :</Label>
-            <TextBox Name="writeBox" BorderThickness="1" BorderBrush="Black"></TextBox>
-            <TextBox Name="readBox" Grid.Row="2" BorderThickness="1" BorderBrush="Black" IsReadOnly="True"></TextBox>
+            <Button Name="buttonCancel" Grid.Row="1" Margin="211,2,411,2" Click="buttonCancel_Click">Cancel</Button>
+            <Button Name="buttonSend" Grid.Row="1" Margin="155,2,469,2" Click="buttonSend_Click">Send</Button>
+            <TextBox Name="statusBox" Grid.Row="1" Margin="52,4,536,0" BorderThickness="0"></TextBox>
+            <Button Name="buttonMessage" Grid.Row="1" Margin="282,2,323,2" Click="buttonMessage_Click">Messages</Button>
+            <Label Name="labelStatus" Grid.Row="1" Margin="0,0,620,0" RenderTransformOrigin="0.5,0.5">Status :</Label>
+            <TextBox Name="writeBox" BorderThickness="1" BorderBrush="Black" Margin="0,0,318,0"></TextBox>
+            <TextBox Name="readBox" Grid.Row="2" BorderThickness="1" BorderBrush="Black" IsReadOnly="True" Margin="0,0,318,0"></TextBox>
+            
+            <Grid Margin="359,0,0,0" Grid.RowSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="271*"/>
+                </Grid.RowDefinitions>
+                <Label Margin="2,2,2,2">--------------------------Error List----------------------------</Label>
+                <ListView BorderThickness="1" BorderBrush="Black" Grid.Row="2" Margin="0,1,0,0" Name="lista" ItemsSource="{Binding}">
+                    <ListView.View>
+                        <GridView >
+                            <GridViewColumn Header="Description" Width="190" DisplayMemberBinding="{Binding Path = Attribute[text].Value}"></GridViewColumn>
+                            <GridViewColumn Header="File" Width="70" DisplayMemberBinding="{Binding Path = Attribute[file].Value}"></GridViewColumn>
+                            <GridViewColumn Header="Line" Width="50" DisplayMemberBinding="{Binding Path = Attribute[line].Value}"></GridViewColumn>
+                            
+                            
+                        </GridView>
+                        
+                    </ListView.View>
+                    
+                </ListView>
+                <Button Name="buttonErrors" Grid.Row="1" Margin="10,5,213,5" Click="buttonErrors_Click">Errors</Button>
+                <Button Name="buttonWarnings" Grid.Row="1" Margin="110,5,113,5" Click="buttonWarnings_Click">Warnings</Button>
+                <TextBox Name="eBox" Grid.Row="1" Margin="210,5,10,5" BorderBrush="White"></TextBox>
+            </Grid>
         </Grid>
-        
-        
+   
     </Grid>
 
 </Window>
