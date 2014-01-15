@@ -67,14 +67,14 @@ namespace primer1
 
         private void buttonMessage_Click(object sender, RoutedEventArgs e)
         {
-            var errors = XElement.Load("C:/Users/Grid/ew.xml");
+            var errors = XElement.Load("C:/Users/Grid/Primeri/ew.xml");
 
             var eCount = errors.Elements().Where(el => "error".Equals(el.Attribute("type").Value)).Count();
             var wCount = errors.Elements().Where(el => "warning".Equals(el.Attribute("type").Value)).Count();
 
             readBox.Text=errors.ToString();
 
-            eBox.Text = " E:" + eCount + " -- W:" + wCount;
+            eBox.Text = " Errors:" + eCount + " -- Warnings:" + wCount;
 
            
             
@@ -98,7 +98,7 @@ namespace primer1
 
         private void buttonWarnings_Click(object sender, RoutedEventArgs e)
         {
-            var errors = XElement.Load("C:/Users/Grid/ew.xml");
+            var errors = XElement.Load("C:/Users/Grid/Primeri/ew.xml");
             
             /*var items = new List<string>();
 
@@ -110,6 +110,43 @@ namespace primer1
             lista.DataContext = items;*/
 
             lista.DataContext = errors.Elements().Where(el => "warning".Equals(el.Attribute("type").Value));
+        }
+
+        private void checkWarnings_Checked(object sender, RoutedEventArgs e)
+        {
+            var errors = XElement.Load("C:/Users/Grid/Primeri/ew.xml");
+            if ((bool)checkErrors.IsChecked)
+            lista.DataContext = errors.Elements();
+            else    
+            lista.DataContext = errors.Elements().Where(el => "error".Equals(el.Attribute("type").Value));
+        }
+
+        private void checkErrors_Checked(object sender, RoutedEventArgs e)
+        {
+            var errors = XElement.Load("C:/Users/Grid/Primeri/ew.xml");
+            if ((bool)checkWarnings.IsChecked)
+            lista.DataContext = errors.Elements();
+            else    
+            lista.DataContext = errors.Elements().Where(el => "warning".Equals(el.Attribute("type").Value));
+            
+        }
+
+        private void checkErrors_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var errors = XElement.Load("C:/Users/Grid/Primeri/ew.xml");
+            if ((bool)checkWarnings.IsChecked)
+                lista.DataContext = errors.Elements().Where(el => "warning".Equals(el.Attribute("type").Value));
+            else
+            lista.DataContext = null;
+        }
+
+        private void checkWarnings_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var errors = XElement.Load("C:/Users/Grid/Primeri/ew.xml");
+            if ((bool)checkErrors.IsChecked)
+            lista.DataContext = errors.Elements().Where(el => "error".Equals(el.Attribute("type").Value));
+            else
+            lista.DataContext = null;
         }
     }
 }

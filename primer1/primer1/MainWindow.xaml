@@ -27,30 +27,39 @@
             <Label Name="labelStatus" Grid.Row="1" Margin="0,0,620,0" RenderTransformOrigin="0.5,0.5">Status :</Label>
             <TextBox Name="writeBox" BorderThickness="1" BorderBrush="Black" Margin="0,0,318,0"></TextBox>
             <TextBox Name="readBox" Grid.Row="2" BorderThickness="1" BorderBrush="Black" IsReadOnly="True" Margin="0,0,318,0"></TextBox>
-            
+
             <Grid Margin="359,0,0,0" Grid.RowSpan="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="35*"/>
                     <RowDefinition Height="35*"/>
                     <RowDefinition Height="271*"/>
                 </Grid.RowDefinitions>
-                <Label Margin="2,2,2,2">--------------------------Error List----------------------------</Label>
+                <Label Margin="2,2,2,2">═════════════════════ Error List ════════════════════════</Label>
                 <ListView BorderThickness="1" BorderBrush="Black" Grid.Row="2" Margin="0,1,0,0" Name="lista" ItemsSource="{Binding}">
                     <ListView.View>
                         <GridView >
                             <GridViewColumn Header="Description" Width="190" DisplayMemberBinding="{Binding Path = Attribute[text].Value}"></GridViewColumn>
                             <GridViewColumn Header="File" Width="70" DisplayMemberBinding="{Binding Path = Attribute[file].Value}"></GridViewColumn>
-                            <GridViewColumn Header="Line" Width="50" DisplayMemberBinding="{Binding Path = Attribute[line].Value}"></GridViewColumn>
-                            
-                            
+                            <GridViewColumn Header="Line" Width="50" DisplayMemberBinding="{Binding Path = Attribute[line].Value}"></GridViewColumn>                        
                         </GridView>
                         
                     </ListView.View>
                     
                 </ListView>
-                <Button Name="buttonErrors" Grid.Row="1" Margin="10,5,213,5" Click="buttonErrors_Click">Errors</Button>
-                <Button Name="buttonWarnings" Grid.Row="1" Margin="110,5,113,5" Click="buttonWarnings_Click">Warnings</Button>
-                <TextBox Name="eBox" Grid.Row="1" Margin="210,5,10,5" BorderBrush="White"></TextBox>
+                <!--
+                <Button Name="buttonErrors" Grid.Row="1" Margin="113,5,130,5" Click="buttonErrors_Click">Errors</Button>
+                <Button Name="buttonWarnings" Grid.Row="1" Margin="193,5,50,5" Click="buttonWarnings_Click">Warnings</Button>
+                -->
+                <TextBox Name="eBox" Grid.Row="1" Margin="165,2,10,2" BorderBrush="White"></TextBox>
+                
+
+                <ToolBar Grid.Row="1" Margin="10,2,158,2">
+                    <CheckBox Name="checkErrors" Checked="checkErrors_Checked" Unchecked="checkErrors_Unchecked" >X Errors</CheckBox>
+                    <Separator></Separator>
+                    <CheckBox Name="checkWarnings" Checked="checkWarnings_Checked" Unchecked="checkWarnings_Unchecked">! Warnings</CheckBox>
+
+                </ToolBar>
+                
             </Grid>
         </Grid>
    
